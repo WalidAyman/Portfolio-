@@ -1,11 +1,11 @@
 {
   "projects": [
     {
-      "name": "Sales Dashboard",
-      "description": "A comprehensive sales analysis dashboard with regional, product, and time-based breakdowns built using Power BI.",
-      "image": "images/project1.jpg",
-      "video": "",
-      "tags": ["Power BI", "SQL", "Excel"],
+      "name": "Super Store Performance Dashboard",
+      "description": "Super Store Performance Dashboard (Power BI) – Developed an interactive dashboard to analyze sales, costs, and profit, with insights on category distribution, regional performance, city-level profitability, and yearly trends. Designed to help decision-makers easily understand business performance and identify top-performing markets.",
+      "image": "images/project1.png",
+      "video": "videos/Super Store Performance Dashboard.mp4",
+      "tags": ["Power BI", "Excel"],
       "link": ""
     },
      {
@@ -18,51 +18,37 @@
     },
 
     {
-      "name": "Executive KPIs Report",
-      "description": "Designed an interactive monthly report for key performance indicators with automated alerts on deviation.",
-      "image": "",
-      "video": "",
-      "tags": ["Superset", "SQL", "PostgreSQL"],
-      "link": ""
-    },
-    {
-      "name": "Social Media Analytics",
-      "description": "Measuring ad campaign performance and analyzing engagement and reach rates across multiple platforms.",
-      "image": "",
-      "video": "",
-      "tags": ["Excel", "Power BI", "Google Sheets"],
+      "name": "Sales & Finance Dashboard",
+      "description": "Sales & Finance Dashboard (Excel) – Built a simple interactive dashboard in Excel using Pivot Tables to track total sales, revenue, expenses vs. profit, top product performance, and monthly trends. A foundational project for visualizing key business metrics clearly.",
+      "image": "images/project3.png",
+      "video": "videos/Sales & Finance Dashboard.mp4",
+      "tags": ["Excel"],
       "link": ""
     }
   ],
 
   "certificates": [
-    {
-      "name": "Google Data Analytics Professional Certificate",
-      "organization": "Google / Coursera",
-      "date": "2024",
-      "icon": "fas fa-database",
-      "link": ""
-    },
-    {
-      "name": "Microsoft Power BI Data Analyst",
-      "organization": "Microsoft",
-      "date": "2023",
-      "icon": "fas fa-chart-pie",
-      "link": ""
-    },
-    {
-      "name": "Python for Data Science",
-      "organization": "IBM / Coursera",
-      "date": "2023",
-      "icon": "fab fa-python",
-      "link": ""
-    },
-    {
-      "name": "SQL Advanced",
-      "organization": "HackerRank",
-      "date": "2022",
+     {
+      "name": "Database Fundamentals",
+      "organization": "MaharaTech - ITIMooca",
+      "date": "2025",
       "icon": "fas fa-table",
-      "link": ""
+      "link": "images/certificate2.png"
+    },
+     {
+      "name": " PostgreSQL Bootcamp  Go From Beginner to Advanced",
+      "organization": "Udemy",
+      "date": "2025",
+      "icon": "fas fa-database",
+      "link": "images/certificate3.png"
+    }
+    ,
+     {
+      "name": " Data Analytics-Data Analyist Specialist",
+      "organization": "Ministry of Communications and Information Technology (MCIT), Egypt",
+      "date": "2025",
+      "icon": "fas fa-chart-line",
+      "link": "images/certificate1.png"
     }
   ]
 }
