@@ -1,8 +1,9 @@
 // ============================================================
 // script.js — Walid Ayman Portfolio
+// الفيديو بيفتح بس لما تضغط Watch Demo أو View
 // ============================================================
 
-// ===== 1. تحميل البيانات من data.json =====
+// ===== 1. تحميل البيانات =====
 async function loadData() {
   try {
     const response = await fetch('data.json');
@@ -27,28 +28,126 @@ function renderProjects(projects) {
     return;
   }
   grid.innerHTML = '';
+
   projects.forEach(project => {
     const card = document.createElement('div');
     card.className = 'project-card reveal';
-    const imageHTML = project.image
-      ? `<img src="${project.image}" alt="${project.name}" class="project-img" onerror="this.parentElement.innerHTML='<div class=\\'project-img-placeholder\\'><i class=\\'fas fa-chart-bar\\'></i></div>'">`
-      : `<div class="project-img-placeholder"><i class="fas fa-chart-bar"></i></div>`;
-    const tagsHTML = project.tags ? project.tags.map(t => `<span class="project-tag-item">${t}</span>`).join('') : '';
-    const linkHTML = project.link ? `<a href="${project.link}" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>` : '';
+
+    // ===== منطقة الصورة — فيها زرار Play لما تعدّي =====
+    let mediaHTML = '';
+    if (project.video) {
+      const thumbnail = project.image
+        ? `<img src="${project.image}" alt="${project.name}" class="project-img"
+            onerror="this.style.display='none'">`
+        : `<div class="project-img-placeholder"><i class="fas fa-chart-bar"></i></div>`;
+
+      // الصورة مع overlay زرار Play — بيفتح الفيديو لما تضغطه
+      mediaHTML = `
+        <div class="project-media" onclick="openVideoModal('${project.video}', '${project.name}')">
+          ${thumbnail}
+          <div class="play-overlay">
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <span class="play-label">Watch Demo</span>
+          </div>
+        </div>`;
+
+    } else if (project.image) {
+      mediaHTML = `<img src="${project.image}" alt="${project.name}" class="project-img"
+        onerror="this.parentElement.innerHTML='<div class=\\'project-img-placeholder\\'><i class=\\'fas fa-chart-bar\\'></i></div>'">`;
+    } else {
+      mediaHTML = `<div class="project-img-placeholder"><i class="fas fa-chart-bar"></i></div>`;
+    }
+
+    // ===== Tags =====
+    const tagsHTML = project.tags
+      ? project.tags.map(t => `<span class="project-tag-item">${t}</span>`).join('')
+      : '';
+
+    // ===== أزرار الأكشن في أسفل الكرت =====
+    // زرار Watch Demo — بيفتح الفيديو
+    const watchBtn = project.video
+      ? `<button class="video-tag-btn" onclick="openVideoModal('${project.video}', '${project.name}')">
+           <i class="fas fa-circle-play"></i> Watch Demo
+         </button>`
+      : '';
+
+    // زرار View Project — بيفتح رابط خارجي
+    const linkBtn = project.link
+      ? `<a href="${project.link}" target="_blank" class="project-link">
+           View Project <i class="fas fa-arrow-right"></i>
+         </a>`
+      : '';
+
     card.innerHTML = `
-      ${imageHTML}
+      ${mediaHTML}
       <div class="project-body">
         <div class="project-tags">${tagsHTML}</div>
         <h3 class="project-title">${project.name}</h3>
         <p class="project-desc">${project.description}</p>
-        ${linkHTML}
+        <div class="project-actions">
+          ${watchBtn}
+          ${linkBtn}
+        </div>
       </div>`;
+
     grid.appendChild(card);
   });
+
   observeElements();
 }
 
-// ===== 3. عرض الشهادات =====
+// ===== 3. Video Modal — نافذة تشغيل الفيديو =====
+function openVideoModal(videoSrc, title) {
+  let modal = document.getElementById('video-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'video-modal';
+    modal.className = 'video-modal';
+    modal.innerHTML = `
+      <div class="video-modal-overlay" onclick="closeVideoModal()"></div>
+      <div class="video-modal-content">
+        <div class="video-modal-header">
+          <h3 id="video-modal-title"></h3>
+          <button class="video-modal-close" onclick="closeVideoModal()">
+            <i class="fas fa-xmark"></i>
+          </button>
+        </div>
+        <video id="video-player" controls playsinline autoplay>
+          Your browser does not support the video tag.
+        </video>
+      </div>`;
+    document.body.appendChild(modal);
+  }
+
+  // حط العنوان والفيديو وشغّله
+  document.getElementById('video-modal-title').textContent = title;
+  const player = document.getElementById('video-player');
+  player.src = videoSrc;
+  player.load();
+  player.play();
+
+  // افتح النافذة
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+  const modal = document.getElementById('video-modal');
+  const player = document.getElementById('video-player');
+  if (modal) {
+    modal.classList.remove('open');
+    player.pause();
+    player.src = '';
+  }
+  document.body.style.overflow = '';
+}
+
+// إغلاق بـ Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeVideoModal();
+});
+
+// ===== 4. عرض الشهادات =====
 function renderCertificates(certificates) {
   const grid = document.getElementById('certs-grid');
   if (!certificates || certificates.length === 0) {
@@ -73,19 +172,17 @@ function renderCertificates(certificates) {
   observeElements();
 }
 
-// ===== 4. أنيميشن الظهور عند التمرير =====
+// ===== 5. أنيميشن الظهور =====
 function observeElements() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-// ===== 5. Navbar عند التمرير =====
+// ===== 6. Navbar =====
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   navbar.style.background = window.scrollY > 50
@@ -93,7 +190,7 @@ window.addEventListener('scroll', () => {
     : 'rgba(10,15,30,0.85)';
 });
 
-// ===== 6. قائمة الموبايل =====
+// ===== 7. Hamburger =====
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.querySelector('.nav-links');
 hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
@@ -101,20 +198,20 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
-// ===== 7. تمييز الرابط الحالي =====
+// ===== 8. Active Nav =====
 const sections = document.querySelectorAll('section[id]');
 const navAnchors = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(section => {
-    if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id');
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.getAttribute('id');
   });
   navAnchors.forEach(a => {
     a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--accent)' : '';
   });
 });
 
-// ===== 8. Contact Form — الإرسال على الإيميل =====
+// ===== 9. Contact Form =====
 const form = document.getElementById('contact-form');
 const sendBtn = document.getElementById('send-btn');
 const formSuccess = document.getElementById('form-success');
@@ -122,22 +219,15 @@ const formSuccess = document.getElementById('form-success');
 if (form) {
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
-
-    // تغيير الزرار أثناء الإرسال
     sendBtn.disabled = true;
     sendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-    const formData = new FormData(form);
-
     try {
       const response = await fetch(form.action, {
         method: 'POST',
-        body: formData,
+        body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       });
-
       if (response.ok) {
-        // نجح الإرسال
         form.reset();
         formSuccess.classList.add('show');
         sendBtn.innerHTML = '<i class="fas fa-check"></i> Sent!';
@@ -146,18 +236,16 @@ if (form) {
           sendBtn.disabled = false;
           sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
         }, 5000);
-      } else {
-        throw new Error('Failed');
-      }
+      } else { throw new Error(); }
     } catch {
       sendBtn.disabled = false;
       sendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-      alert('Something went wrong. Please try again or contact me directly via email.');
+      alert('Something went wrong. Please contact me directly via email.');
     }
   });
 }
 
-// ===== 9. تشغيل كل شيء =====
+// ===== 10. تشغيل كل شيء =====
 document.addEventListener('DOMContentLoaded', () => {
   loadData();
   observeElements();
