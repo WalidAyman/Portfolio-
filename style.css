@@ -586,3 +586,25 @@ section { padding: 100px 0; position: relative; }
   .form-card { padding: 24px; }
   .hero-btns { flex-direction: column; align-items: center; }
 }
+/* إزالة النقط نهائيًا من المهارات */
+.skill-items {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+.skill-items li {
+  list-style: none !important;
+}
+
+/* لو فيه ::marker */
+.skill-items li::marker {
+  content: "" !important;
+  display: none !important;
+}
+
+/* لو فيه ::before عامل النقط */
+.skill-items li::before {
+  content: "" !important;
+  display: none !important;
+}
