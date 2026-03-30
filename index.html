@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6XQEP44D1S"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6XQEP44D1S');
+  </script>
 </head>
 <body>
 
@@ -31,10 +40,10 @@
   <section class="hero" id="home">
     <div class="hero-content">
       <h1 class="hero-name">Walid Ayman</h1>
-      <h2 class="hero-title"> <span class="highlight">Data Analyst</span></h2>
+      <h2 class="hero-title"><span class="highlight">Data Analyst</span></h2>
       <p class="hero-desc">
         I turn raw data into clear, actionable insights that empower
-        organizations to make smarter, data-driven decisions. Skilled in SQL, Excel, Power BI, 
+        organizations to make smarter, data-driven decisions. Skilled in SQL, Excel, Power BI,
         Superset, and Python, I deliver impactful dashboards, reports, and visualizations.
       </p>
       <div class="hero-btns">
@@ -45,12 +54,11 @@
       <div class="social-icons">
         <a href="https://wa.me/201026855696" target="_blank" class="social-icon whatsapp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         <a href="https://linkedin.com/in/walid-ayman-4a268a294" target="_blank" class="social-icon linkedin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-       <a href="#" class="social-icon github" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-icon github" title="GitHub"><i class="fab fa-github"></i></a>
         <a href="mailto:walidayman770@gmail.com" class="social-icon email" title="Email"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
 
-    <!-- الصورة أقرب للكلام -->
     <div class="hero-image">
       <div class="profile-ring">
         <img src="images/profile.jpg" alt="Walid Ayman"
@@ -85,6 +93,7 @@
           <div class="stat-card"><span class="stat-num">40+</span><span class="stat-label">Projects Completed</span></div>
           <div class="stat-card"><span class="stat-num">5+</span><span class="stat-label">Years Experience</span></div>
           <div class="stat-card"><span class="stat-num">20+</span><span class="stat-label">Business Units</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -96,48 +105,45 @@
         <span class="section-tag">What I Know</span>
         <h2>My <span class="highlight">Skills</span></h2>
       </div>
-      <div class="skills-grid">
+      <div class="skills-categories">
 
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i class="fas fa-database"></i></div>
-          <h3>SQL</h3>
-          <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
-          <span class="skill-percent">90%</span>
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="fas fa-chart-pie"></i></div>
+            <h3>Data Analysis & BI</h3>
+          </div>
+          <ul class="skill-items">
+            <li><i class="fas fa-check-circle"></i> Data Analysis</li>
+            <li><i class="fas fa-check-circle"></i> Data Visualization</li>
+            <li><i class="fas fa-check-circle"></i> Dashboard Development</li>
+            <li><i class="fas fa-check-circle"></i> Reporting (Jasper)</li>
+          </ul>
         </div>
 
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i class="fas fa-file-excel"></i></div>
-          <h3>Excel</h3>
-          <div class="skill-bar"><div class="skill-fill" style="--w:95%"></div></div>
-          <span class="skill-percent">95%</span>
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="fas fa-database"></i></div>
+            <h3>Data Engineering</h3>
+          </div>
+          <ul class="skill-items">
+            <li><i class="fas fa-check-circle"></i> SQL</li>
+            <li><i class="fas fa-check-circle"></i> Database Design</li>
+            <li><i class="fas fa-check-circle"></i> ERD Modeling</li>
+            <li><i class="fas fa-check-circle"></i> Data Cleaning & Transformation (ETL)</li>
+          </ul>
         </div>
 
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i class="fas fa-chart-pie"></i></div>
-          <h3>Power BI</h3>
-          <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
-          <span class="skill-percent">85%</span>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i class="fab fa-python"></i></div>
-          <h3>Python</h3>
-          <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
-          <span class="skill-percent">75%</span>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i class="fas fa-fire"></i></div>
-          <h3>Superset</h3>
-          <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
-          <span class="skill-percent">95%</span>
-        </div>
-
-        <div class="skill-card reveal">
-          <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Data Visualization</h3>
-          <div class="skill-bar"><div class="skill-fill" style="--w:88%"></div></div>
-          <span class="skill-percent">95%</span>
+        <div class="skill-category reveal">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="fas fa-tools"></i></div>
+            <h3>Tools</h3>
+          </div>
+          <ul class="skill-items">
+            <li><i class="fas fa-check-circle"></i> Apache Superset</li>
+            <li><i class="fas fa-check-circle"></i> Power BI</li>
+            <li><i class="fas fa-check-circle"></i> Excel</li>
+            <li><i class="fas fa-check-circle"></i> Python</li>
+          </ul>
         </div>
 
       </div>
@@ -227,8 +233,6 @@
       <p class="contact-sub">Want to transform your data into actionable insights? Let's discuss how I can help your organization make data-driven decisions.</p>
 
       <div class="contact-wrapper">
-
-        <!-- روابط التواصل -->
         <div class="contact-info-col">
           <a href="https://wa.me/201026855696" target="_blank" class="contact-card">
             <div class="contact-icon whatsapp-icon"><i class="fab fa-whatsapp"></i></div>
@@ -242,81 +246,60 @@
             <div class="contact-icon linkedin"><i class="fab fa-linkedin-in"></i></div>
             <div class="contact-info"><span class="contact-type">LinkedIn</span><span class="contact-value">linkedin.com/in/walid-ayman</span></div>
           </a>
-          <a href="" target="_blank" class="contact-card">
-          <div class="contact-icon github-icon"><i class="fab fa-github"></i></div>
+          <a href="#" target="_blank" class="contact-card">
+            <div class="contact-icon github-icon"><i class="fab fa-github"></i></div>
             <div class="contact-info"><span class="contact-type">GitHub</span><span class="contact-value">github.com</span></div>
           </a>
         </div>
 
-        <!-- فورم التواصل -->
         <div class="contact-form-col">
           <div class="form-card">
             <h3>Send Me a Message</h3>
-
-            <!-- 
-              =====================================================
-              عشان الفورم يبعتلك على إيميلك:
-              1. روح على formspree.io وسجّل حساب مجاني
-              2. أنشئ Form جديد
-              3. هيديك رابط زي: https://formspree.io/f/XXXXXXXX
-              4. حطه في action بدل الرابط ده
-              =====================================================
-            -->
             <form id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
-
               <div class="form-row">
                 <div class="form-group">
                   <label>First Name</label>
-                  <input type="text" name="first_name" placeholder="first_name" required />
+                  <input type="text" name="first_name" placeholder="First Name" required />
                 </div>
                 <div class="form-group">
                   <label>Last Name</label>
-                  <input type="text" name="last_name" placeholder="last_name" required />
+                  <input type="text" name="last_name" placeholder="Last Name" required />
                 </div>
               </div>
-
               <div class="form-group">
                 <label>Email Address</label>
                 <input type="email" name="email" placeholder="john.doe@company.com" required />
               </div>
-
               <div class="form-group">
                 <label>Company <span style="color:var(--text-muted)">(Optional)</span></label>
                 <input type="text" name="company" placeholder="Your Company Name" />
               </div>
-
               <div class="form-group">
                 <label>Subject</label>
                 <input type="text" name="subject" placeholder="Data Analysis Project Inquiry" required />
               </div>
-
               <div class="form-group">
                 <label>Message</label>
                 <textarea name="message" rows="5" placeholder="Tell me about your data analysis needs, project requirements, or any questions you have..." required></textarea>
               </div>
-
               <button type="submit" class="btn-send" id="send-btn">
                 <i class="fas fa-paper-plane"></i> Send Message
               </button>
-
-              <!-- رسالة النجاح -->
               <div class="form-success" id="form-success">
                 <i class="fas fa-circle-check"></i>
                 Message sent successfully! I'll get back to you within 24 hours.
               </div>
-
             </form>
             <p class="form-note">I'll get back to you within 24 hours. Looking forward to discussing your project!</p>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- ===== Footer ===== -->
   <footer class="footer">
-    <p>Made with <span style="color:#00e5ff"></span> by Walid Ayman &copy; 2025</p>
+    <p>Made with <span style="color:#00e5ff">♥</span> by Walid Ayman &copy; 2025</p>
   </footer>
 
   <script src="script.js"></script>
